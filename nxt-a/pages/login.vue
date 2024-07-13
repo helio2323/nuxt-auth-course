@@ -1,6 +1,6 @@
 <template>
     <div class="login-container">
-      <h1>Login</h1>
+      <h1>Status: {{ status }}</h1>
       <form @submit.prevent="signUp">
 
         <div>
@@ -12,33 +12,19 @@
           <input type="password" v-model="password" id="password" required>
         </div>
         <button type="submit">Registrar</button>
+
+        <button @click="signIn('credentials', { callbackUrl: '/', username: 'jsmith', password: 'hunter2' })">
+        sign in (credential)
+      </button>
+
         <div v-if="errorMsg" class="error">{{ errorMsg }}</div>
         <div v-if="successMsg" class="success">{{ successMsg }}</div>
       </form>
     </div>
   </template>
   
-  <script setup>
-  import { ref } from 'vue'
-  
-  const client = useSupabaseClient().auth
-  const email = ref("")
-  const password = ref("")
-  const errorMsg = ref("")
-  const successMsg = ref("")
-  
-  async function signUp() {
-    try {
-      const { error } = await client.signUp({
-        email: email.value,
-        password: password.value
-      })
-      if (error) throw error
-      successMsg.value = 'Verifique seu email para o link de login!'
-    } catch (error) {
-      errorMsg.value = error.message
-    }
-  }
+  <script setup >
+
   </script>
   
   <style scoped>
