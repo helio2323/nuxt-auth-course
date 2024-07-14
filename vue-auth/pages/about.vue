@@ -1,7 +1,6 @@
 <template>
     <div>
-        <h1>Home Page</h1>
-        <b-button button="primary" @click="clicked">Click Me</b-button>
+        <h1>About Page</h1>
     </div>
 </template>
 
@@ -9,8 +8,7 @@
 
 </script>
 
-<style scoped>
-
+<style  scoped>
 div {
     display: flex;
     flex-direction: column;
